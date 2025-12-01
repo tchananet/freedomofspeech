@@ -1961,7 +1961,7 @@ section,
 --------------------------------------------------------------*/
 #car-color-selector {
   padding: 60px 0;
-  text-align: center;
+  /* text-align: center; */
 }
 .car-viewer {
   position: relative;
@@ -1972,7 +1972,7 @@ section,
 .car-images {
   position: relative;
   width: 100%;
-  height: 200px; /* Ajustez la hauteur au besoin */
+  height: 500px; /* Ajustez la hauteur au besoin */
 }
 .car-image {
   position: absolute;
@@ -1994,8 +1994,8 @@ section,
   gap: 15px;
 }
 .color-btn {
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   border: 2px solid transparent;
   cursor: pointer;
@@ -2011,56 +2011,90 @@ section,
   border-color: #007bff;
 }
 
-/*--------------------------------------------------------------
-# UNI-K Comparaison Section
---------------------------------------------------------------*/
-.unik-comparaison .comparaison-wrapper {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 600px; /* Augmenter la hauteur pour l'immersion */
+/* .car-color-list (code ajoute) */ 
+.car-color-list {
+  background-color: var(--surface-color);
+  padding: 10px 30px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  margin-bottom: 20px;
+  box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
+  border-top: 2px solid #df1529;
+  border-bottom: 3px solid #df1529;
 }
 
-.unik-comparaison .unik-comparaison-image {
+.car-color-list a {
+  display: block;
+  line-height: 1;
+  padding: 8px 0 8px 15px;
+  border-left: 3px solid color-mix(in srgb, var(--default-color), transparent 70%);
+  margin: 20px 0;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  transition: 0.3s;
+  color: var(--heading-color);
+  font-weight: 700;
+  border-color: var(--accent-color);
+}
+
+.car-color-list a.active {
+  color: var(--heading-color);
+  font-weight: 700;
+  border-color: var(--accent-color);
+}
+
+.car-color-list a:hover {
+  border-color: var(--accent-color);
+}
+
+.car-color-list h5 {
+  font-size: 19px;
+  font-weight: 700;
+  padding: 15px;
+  color: gray;
+}
+
+/*--------------------------------------------------------------
+# Comparaison Section
+--------------------------------------------------------------*/
+
+.comparaison .comparaison-image {
   max-width: 100%; /* Image plus grande */
   height: auto;
   border-radius: 15px;
   z-index: 1;
+  margin-top: -200px;
 }
 
-.unik-comparaison .version-card {
+.comparaison .version-card {
   position: absolute;
-  top: 60%;
+  top: 50%;
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid #ddd;
-  border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   padding: 25px;
-  width: 35%;
+  width: 45%;
   max-width: 350px; /* Ajuster la largeur max */
   z-index: 2;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.unik-comparaison .version-card:hover {
+.comparaison .version-card:hover {
   transform: translateY(-50%) scale(1.05); /* Ajuster la transformation au survol */
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 
-.unik-comparaison .version-card.standard {
+.comparaison .version-card.standard {
   left: 5%; /* Positionnement à gauche */
   transform: translateY(-50%);
 }
 
-.unik-comparaison .version-card.full-option {
+.comparaison .version-card.full-option {
   right: 5%; /* Positionnement à droite */
   transform: translateY(-50%);
 }
 
-.unik-comparaison .version-card h3 {
+.comparaison .version-card h3 {
   font-family: var(--heading-font);
   font-size: 20px;
   font-weight: 700;
@@ -2070,13 +2104,13 @@ section,
   padding-bottom: 10px;
 }
 
-.unik-comparaison .version-card ul {
+.comparaison .version-card ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.unik-comparaison .version-card ul li {
+.comparaison .version-card ul li {
   font-family: var(--default-font);
   color: var(--default-color);
   padding: 8px 0;
@@ -2085,7 +2119,7 @@ section,
   font-size: 15px;
 }
 
-.unik-comparaison .version-card ul li i {
+.comparaison .version-card ul li i {
   color: var(--accent-color);
   margin-right: 10px;
   font-size: 18px;
@@ -2093,39 +2127,251 @@ section,
 
 /* Responsive */
 @media (max-width: 992px) {
-  .unik-comparaison .unik-comparaison-image {
+  .comparaison .comparaison-image {
     max-width: 80%;
   }
-  .unik-comparaison .version-card {
+  .comparaison .version-card {
     width: 45%;
   }
-  .unik-comparaison .version-card.standard {
+  .comparaison .version-card.standard {
     left: 2%;
   }
-  .unik-comparaison .version-card.full-option {
+  .comparaison .version-card.full-option {
     right: 2%;
   }
 }
 
 @media (max-width: 768px) {
-  .unik-comparaison .comparaison-wrapper {
+  .comparaison .comparaison-wrapper {
     flex-direction: column;
     min-height: auto; /* Réinitialiser la hauteur */
   }
 
-  .unik-comparaison .unik-comparaison-image {
+  .comparaison .comparaison-image {
     max-width: 100%;
     margin-bottom: 20px;
   }
 
-  .unik-comparaison .version-card {
+  .comparaison .version-card {
     position: static; /* Réinitialiser le positionnement */
     transform: none; /* Réinitialiser la transformation */
     width: 100%;
     max-width: 500px;
   }
 
-  .unik-comparaison .version-card.standard {
+  .comparaison .version-card.standard {
     margin-bottom: 1rem;
   }
+}
+
+/*--------------------------------------------------------------
+# Gallery Section
+--------------------------------------------------------------*/
+.gallery {
+  padding: 60px 0;
+}
+
+.gallery #gallery-flters {
+  padding: 0;
+  margin: 0 auto 35px auto;
+  list-style: none;
+  text-align: center;
+  background: #fff;
+  border-radius: 50px;
+  padding: 2px 15px;
+}
+
+.gallery #gallery-flters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px 15px 8px 15px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #272829;
+  margin-bottom: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.gallery #gallery-flters li:hover,
+.gallery #gallery-flters li.filter-active {
+  color: #cc1616;
+}
+
+.gallery .gallery-item {
+  margin-bottom: 30px;
+}
+
+.gallery .gallery-main-image {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.gallery .gallery-main-image img {
+  max-width: 100%;
+  height: auto;
+  transition: all 0.3s ease-in-out;
+}
+
+.gallery .gallery-thumbnails {
+  text-align: center;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.gallery .gallery-thumbnail {
+  width: 100px;
+  height: 75px;
+  object-fit: cover;
+  cursor: pointer;
+  margin: 5px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease-in-out;
+  display: inline-block;
+}
+
+.gallery .gallery-thumbnail:hover,
+.gallery .gallery-thumbnail.active {
+  border-color: #cc1616;
+}
+
+/* Gallery specification */
+
+.gallery .specification-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery .specification-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid #ddd;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  padding: 25px;
+  z-index: 2;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 800px;
+}
+.gallery .specification-card:hover {
+  transform: translateY(-50%) scale(1.05); /* Ajuster la transformation au survol */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+.gallery .specification-card h3 {
+  font-family: var(--heading-font);
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 10px;
+}
+
+/* .gallery .specification-card h3 {
+  font-family: var(--heading-font);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 10px;
+} */
+
+.gallery .specification-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.gallery .specification-card ul li {
+  font-family: var(--default-font);
+  color: var(--default-color);
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+}
+
+.gallery .specification-card ul li i {
+  color: var(--accent-color);
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+/*--------------------------------------------------------------
+# Brochure Section
+--------------------------------------------------------------*/
+.brochure {
+  background-color: #fff;
+  padding: 60px 0;
+}
+
+.brochure .brochure-image {
+  position: relative;
+}
+
+.brochure .guarantee-logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 100px; /* Adjust size as needed */
+  height: 100px; /* Adjust size as needed */
+}
+
+.brochure .guarantee-logo img {
+  width: 100%;
+  height: auto;
+}
+
+.brochure .brochure-content h2 {
+  font-size: 36px;
+  font-weight: 700;
+  font-family: var(--heading-font);
+  color: #000;
+}
+
+.brochure .brochure-content h3 {
+  font-size: 24px;
+  font-weight: 500;
+  color: #cc1616; 
+  margin-bottom: 30px;
+}
+
+.brochure .features {
+  margin-bottom: 30px;
+}
+
+.brochure .feature-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 15px;
+}
+
+.brochure .feature-item i {
+  font-size: 20px;
+  color: #cc1616; 
+  margin-right: 15px;
+}
+
+.brochure .feature-item p {
+  margin: 0;
+  font-size: 17px;
+}
+
+.brochure .btn-test-drive {
+  background-color: #cc1616; 
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.brochure .btn-test-drive:hover {
+  background-color: #4e0303; /* Darker blue on hover */
 }

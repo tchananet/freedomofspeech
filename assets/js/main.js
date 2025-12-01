@@ -201,4 +201,56 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+  /**
+   * Gallery isotope and filters
+   */
+  document.addEventListener('DOMContentLoaded', () => {
+    const galleryFilters = document.querySelectorAll('#gallery-flters li');
+    const galleryThumbnails = document.querySelectorAll('.gallery-thumbnail');
+    const mainImage = document.querySelector('.gallery-main-image img');
+
+    // Set default filter
+    let activeFilter = '.filter-complet';
+
+    // Filter thumbnails
+    function filterThumbnails() {
+      galleryThumbnails.forEach(thumbnail => {
+        if (thumbnail.matches(activeFilter)) {
+          thumbnail.style.display = 'inline-block';
+        } else {
+          thumbnail.style.display = 'none';
+        }
+      });
+      // Set first visible thumbnail as active and update main image
+      const firstVisibleThumbnail = document.querySelector(`.gallery-thumbnail${activeFilter}`);
+      if (firstVisibleThumbnail) {
+        mainImage.src = firstVisibleThumbnail.src;
+        document.querySelector('.gallery-thumbnail.active').classList.remove('active');
+        firstVisibleThumbnail.classList.add('active');
+      }
+    }
+
+    // Initial filter
+    filterThumbnails();
+
+    // Filter click event
+    galleryFilters.forEach(filter => {
+      filter.addEventListener('click', function() {
+        galleryFilters.forEach(item => item.classList.remove('filter-active'));
+        this.classList.add('filter-active');
+        activeFilter = this.getAttribute('data-filter');
+        filterThumbnails();
+      });
+    });
+
+    // Thumbnail click event
+    galleryThumbnails.forEach(thumbnail => {
+      thumbnail.addEventListener('click', function() {
+        mainImage.src = this.src;
+        galleryThumbnails.forEach(item => item.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  });
+
 })();
